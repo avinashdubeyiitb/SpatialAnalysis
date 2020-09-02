@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>Lab Inaugurated</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+    </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="./resources/ol.css">
+    <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+    <link rel="stylesheet" href="./resources/qgis2web.css">
+    <style>
+        .ol-geocoder.gcd-gl-container {
+            top: 135px !important;
+            left: .5em !important;
+            width: 2.1em !important;
+            height: 2.1em !important;
+        }
+        
+        .ol-geocoder .gcd-gl-container {
+            width: 2.1em !important;
+            height: 2.1em !important;
+        }
+        
+        .ol-geocoder .gcd-gl-control {
+            width: 2.1em !important;
+        }
+        
+        .ol-geocoder .gcd-gl-expanded {
+            width: 15.625em !important;
+            height: 2.1875em;
+        }
+        
+        .ol-touch .ol-geocoder.gcd-gl-container {
+            top: 180px !important;
+        }
+        
+        .ol-geocoder .gcd-gl-btn {
+            width: 1.375em !important;
+            height: 1.375em !important;
+            top: .225em !important;
+            background-image: none !important;
+        }
+    </style>
+    <style>
+        .search-layer {
+            top: 170px;
+            left: .5em;
+        }
+        
+        .ol-touch .search-layer {
+            top: 230px;
+        }
+    </style>
+    <style>
+        html,
+        body {
+            background-color: #ffffff;
+        }
+        
+        .ol-control button {
+            background-color: #f8f8f8 !important;
+            color: #000000 !important;
+            border-radius: 0px !important;
+        }
+        
+        .ol-zoom,
+        .geolocate,
+        .gcd-gl-control .ol-control {
+            background-color: rgba(255, 255, 255, .4) !important;
+            padding: 3px !important;
+        }
+        
+        .ol-scale-line {
+            background: none !important;
+        }
+        
+        .ol-scale-line-inner {
+            border: 2px solid #f8f8f8 !important;
+            border-top: none !important;
+            background: rgba(255, 255, 255, 0.5) !important;
+            color: black !important;
+        }
+    </style>
+
+    <style>
+        .geolocate {
+            top: 65px;
+            left: .5em;
+        }
+        
+        .ol-touch .geolocate {
+            top: 80px;
+        }
+    </style>
+    <link href="resources/ol-geocoder.min.css" rel="stylesheet">
+    <style>
+        .tooltip {
+            position: relative;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            color: white;
+            padding: 4px 8px;
+            opacity: 0.7;
+            white-space: nowrap;
+        }
+        
+        .tooltip-measure {
+            opacity: 1;
+            font-weight: bold;
+        }
+        
+        .tooltip-static {
+            background-color: #ffcc33;
+            color: black;
+            border: 1px solid white;
+        }
+        
+        .tooltip-measure:before,
+        .tooltip-static:before {
+            border-top: 6px solid rgba(0, 0, 0, 0.5);
+            border-right: 6px solid transparent;
+            border-left: 6px solid transparent;
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            margin-left: -7px;
+            left: 50%;
+        }
+        
+        .tooltip-static:before {
+            border-top-color: #ffcc33;
+        }
+        
+        .measure-control {
+            top: 100px;
+            left: .5em;
+        }
+        
+        .ol-touch .measure-control {
+            top: 130px;
+        }
+    </style>
+    <style>
+        #map {
+            width: 1618px;
+            height: 866px;
+        }
+    </style>
+    <style>
+        /*
+        DEMO STYLE
+    */
+        
+        @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fafafa;
+        }
+        
+        p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+            font-weight: 300;
+            line-height: 1.7em;
+            color: #999;
+        }
+        
+        a,
+        a:hover,
+        a:focus {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .navbar {
+            padding: 15px 10px;
+            background: #fff;
+            border: none;
+            border-radius: 0;
+            margin-bottom: 40px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-btn {
+            box-shadow: none;
+            outline: none !important;
+            border: none;
+        }
+        
+        .line {
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px dashed #ddd;
+            margin: 40px 0;
+        }
+        /* ---------------------------------------------------
+        SIDEBAR STYLE
+    ----------------------------------------------------- */
+        
+        .wrapper {
+            display: flex;
+            width: 100%;
+        }
+        
+        #sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 999;
+            background: #7386D5;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        
+        #sidebar.active {
+            margin-left: -250px;
+        }
+        
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #6d7fcc;
+        }
+        
+        #sidebar ul.components {
+            padding: 20px 0;
+            border-bottom: 1px solid #47748b;
+        }
+        
+        #sidebar ul p {
+            color: #fff;
+            padding: 10px;
+        }
+        
+        #sidebar ul li a {
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+        }
+        
+        #sidebar ul li a:hover {
+            color: #7386D5;
+            background: #fff;
+        }
+        
+        #sidebar ul li.active>a,
+        a[aria-expanded="true"] {
+            color: #fff;
+            background: #6d7fcc;
+        }
+        
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+        
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        
+        ul ul a {
+            font-size: 0.9em !important;
+            padding-left: 30px !important;
+            background: #6d7fcc;
+        }
+        
+        ul.CTAs {
+            padding: 20px;
+        }
+        
+        ul.CTAs a {
+            text-align: center;
+            font-size: 0.9em !important;
+            display: block;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        
+        a.download {
+            background: #fff;
+            color: #7386D5;
+        }
+        
+        a.article,
+        a.article:hover {
+            background: #6d7fcc !important;
+            color: #fff !important;
+        }
+        /* ---------------------------------------------------
+        CONTENT STYLE
+    ----------------------------------------------------- */
+        
+        #content {
+            width: calc(100% - 250px);
+            padding: 40px;
+            min-height: 100vh;
+            transition: all 0.3s;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        
+        #content.active {
+            width: 100%;
+        }
+        /* ---------------------------------------------------
+        MEDIAQUERIES
+    ----------------------------------------------------- */
+        
+        @media (max-width: 768px) {
+            #sidebar {
+                margin-left: -250px;
+            }
+            #sidebar.active {
+                margin-left: 0;
+            }
+            #content {
+                width: 100%;
+            }
+            #content.active {
+                width: calc(100% - 250px);
+            }
+            #sidebarCollapse span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Spatial sideBar</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>ELSI Data</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Choropleth Map's</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="C:\Users\Akshat Shah\Projects\Web Dev\Intership IIT-B\Integration_FB\second\Maps\elsi_college_data\index.html">Elsi College Data</a>
+                        </li>
+                        <li>
+                            <a href="C:\Users\Akshat Shah\Projects\Web Dev\Intership IIT-B\Integration_FB\second\Maps\eyrtc_allowed\index.html">EYRTC Allowed</a>
+                        </li>
+                        <li>
+                            <a href="C:\Users\Akshat Shah\Projects\Web Dev\Intership IIT-B\Integration_FB\second\Maps\lab_inaugrated\index.html">Lab Inaugurated</a>
+                        </li>
+                        <li>
+                            <a href="C:\Users\Akshat Shah\Projects\Web Dev\Intership IIT-B\Integration_FB\second\Maps\tbt_allowed\index.html">TBT Allowed</a>
+                        </li>
+                        <li>
+                            <a href="C:\Users\Akshat Shah\Projects\Web Dev\Intership IIT-B\Integration_FB\second\Maps\tbt_completed\index.html">TBT Completed</a>
+                        </li>
+                        <li>
+                            <a href="C:\Users\Akshat Shah\Projects\Web Dev\Intership IIT-B\Integration_FB\second\Maps\wo_attended\index.html">Workshop Attended</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="C:\Users\Akshat Shah\Projects\Web Dev\Intership IIT-B\Integration_FB\second\scoring.html">Scoring</a>
+                </li>
+                <li>
+                    <a href="C:\Users\Akshat Shah\Projects\Web Dev\Intership IIT-B\Integration_FB\second\wo_sug.html">Workshop suggestor</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <!-- <span>Toggle Sidebar</span> -->
+                    </button>
+                    <h3>Welcome to Lab Inaugurated MaP !!!</h3>
+                </div>
+            </nav>
+            <div id="map">
+                <div id="popup" class="ol-popup">
+                    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                    <div id="popup-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="resources/qgis2web_expressions.js"></script>
+    <script src="resources/proj4.js"></script>
+    <script>
+        proj4.defs('EPSG:4326', '+proj=longlat +datum=WGS84 +no_defs');
+    </script>
+    <script src="resources/polyfills.js"></script>
+    <script src="./resources/functions.js"></script>
+    <script src="./resources/ol.js"></script>
+    <script src="./resources/ol-layerswitcher.js"></script>
+    <script src="resources/ol-geocoder.js"></script>
+    <script src="layers/States_0.js"></script>
+    <script src="layers/district_map_1.js"></script>
+    <script src="layers/lab_inaugrated_final_map_2.js"></script>
+    <script src="layers/final_elsi_map_databse_3.js"></script>
+    <script src="styles/States_0_style.js"></script>
+    <script src="styles/district_map_1_style.js"></script>
+    <script src="styles/lab_inaugrated_final_map_2_style.js"></script>
+    <script src="styles/final_elsi_map_databse_3_style.js"></script>
+    <script src="./layers/layers.js" type="text/javascript"></script>
+    <script src="./resources/Autolinker.min.js"></script>
+    <script src="./resources/qgis2web.js"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+
+</html>
